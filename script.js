@@ -1,23 +1,24 @@
 
 //An array stores the different selections computer and user can get
 const selection = ["rock", "paper", "scissors"];
-//Computer select rock paper or scissors
-const computerSelection = selection[Math.floor(Math.random() * selection.length)];
-
 
 //Computer and User play a round, rock(0) beats scissors(2), scissors(2) beats paper(1) and paper(1) beats rock(0). The winner gets a point and the result is shown
 function playRound(userSelection, computerSelection){
-
+    let winnerRound = ""
     if (userSelection === "rock" && computerSelection === "scissors"){
-        return `You Won ! ${userSelection} beats ${computerSelection}`;
+        console.log(`You Won ! ${userSelection} beats ${computerSelection}`);
+        return winnerRound = "User";
     } else if (userSelection === "scissors" && computerSelection === "paper"){
-        return `You Won ! ${userSelection} beats ${computerSelection}`;
+        console.log(`You Won ! ${userSelection} beats ${computerSelection}`);
+        return winnerRound = "User";
     } else if (userSelection === "paper" && computerSelection === "rock"){
-        return `You Won ! ${userSelection} beats ${computerSelection}`;
+        console.log(`You Won ! ${userSelection} beats ${computerSelection}`);
+        return winnerRound = "User";
     } else if (userSelection == computerSelection){
         return "It's a tie!"
     } else {
-        return `You Lose ! ${computerSelection} beats ${userSelection}`;
+        console.log(`You Lose ! ${computerSelection} beats ${userSelection}`);
+        return winnerRound = "Computer";
     }
 }
 
@@ -30,13 +31,13 @@ function game(){
     let userScore = 0;
     for (let i = 0; i < 5; i++){
         userSelection = prompt("Will you choose Rock, Paper or Scissors?").toLowerCase();
+        computerSelection = selection[Math.floor(Math.random() * selection.length)];
         console.log(`You chose ${userSelection}`);
         console.log(`Computer chose ${computerSelection}`);
-        console.log(playRound(userSelection, computerSelection));
-       if (playRound(userSelection, computerSelection).charAt(4) === "W"){
+       if (playRound(userSelection, computerSelection) === "User"){
             userScore += 1;
             console.log(`Your score is ${userScore}. The computer score is ${computerScore}`)
-        } else if (playRound(userSelection, computerSelection).charAt(4) === "L"){
+        } else if (playRound(userSelection, computerSelection) === "Computer"){
             computerScore += 1;
             console.log(`Your score is ${userScore}. The computer score is ${computerScore}`)
         } else {
@@ -48,7 +49,7 @@ function game(){
     
         return `You are the winner !`;
     } else {
-        return `You lose.`;
+        return `Sorry, the computer wins.`;
     }
 }
 

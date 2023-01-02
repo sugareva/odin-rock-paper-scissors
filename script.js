@@ -29,9 +29,9 @@ function game(){
     let computerScore = 0;
     let userScore = 0;
     for (let i = 0; i < 5; i++){
-        userSelection = prompt("Will you choose Rock, Paper or Scissors?").toLowerCase()
-        console.log(`You chose ${userSelection}`)
-        console.log(`Computer chose ${computerSelection}`)
+        userSelection = prompt("Will you choose Rock, Paper or Scissors?").toLowerCase();
+        console.log(`You chose ${userSelection}`);
+        console.log(`Computer chose ${computerSelection}`);
         console.log(playRound(userSelection, computerSelection));
        if (playRound(userSelection, computerSelection).charAt(4) === "W"){
             userScore += 1;
@@ -46,9 +46,9 @@ function game(){
     //Final winner is announced
    if (userScore > computerScore){
     
-        return `You are the winner !`
+        return `You are the winner !`;
     } else {
-        return `You lose.`
+        return `You lose.`;
     }
 }
 

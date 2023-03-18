@@ -6,6 +6,8 @@ const pScore = document.getElementById("playerScore");
 const cScore = document.getElementById("computerScore");
 const roundScore = document.getElementById("round");
 const info = document.getElementById("infotext");
+const nBar = document.getElementById("notification-bar");
+
 //An array stores the different selections computer and user can get
 const selection = ["rock", "paper", "scissors"];
 
@@ -14,18 +16,24 @@ const selection = ["rock", "paper", "scissors"];
 function playRound(userSelection, computerSelection){
     let winnerRound = ""
     if (userSelection === "rock" && computerSelection === "scissors"){
+        document.getElementById('notification-bar').setAttribute('class', 'notification is-success is-light has-text-centered');
         info.textContent = `You Won ! ${userSelection} beats ${computerSelection}`;
         return winnerRound = "User";
     } else if (userSelection === "scissors" && computerSelection === "paper"){
         info.textContent = `You Won ! ${userSelection} beats ${computerSelection}`;
+        document.getElementById('notification-bar').setAttribute('class', 'notification is-success is-light has-text-centered');
         return winnerRound = "User";
     } else if (userSelection === "paper" && computerSelection === "rock"){
+        document.getElementById('notification-bar').setAttribute('class', 'notification is-success is-light has-text-centered');
+
         info.textContent = `You Won ! ${userSelection} beats ${computerSelection}`;
         return winnerRound = "User";
     } else if (userSelection == computerSelection){
+        document.getElementById('notification-bar').setAttribute('class', 'notification is-warning is-light has-text-centered');
         info.textContent = "It's a tie!"
         return "It's a tie!"
     } else {
+        document.getElementById('notification-bar').setAttribute('class', 'notification is-danger is-light has-text-centered');
         info.textContent = `You Lose ! ${computerSelection} beats ${userSelection}`;
         return winnerRound = "Computer";
     }
@@ -35,9 +43,9 @@ function playRound(userSelection, computerSelection){
 
 
 //The game loops for 5 rounds. 
+//Computer choose its selection, score and round are updated.
 function game(){
     for (let i = 0; i === 0; i++){
-        
         computerSelection = selection[Math.floor(Math.random() * selection.length)];
         console.log(`You chose ${userSelection}`);
         console.log(`Computer chose ${computerSelection}`);
@@ -59,13 +67,14 @@ function game(){
         cScore.textContent = computerScore;
     }
     //Final winner is announced
-    if (round === 5) {
+    //Reset the game
+    if (userScore === 5 || computerScore === 5) {
         if (userScore > computerScore){
         alert(`You are the winner !`);
         reset()
 
     } else {
-        alert(`Sorry, the computer wins.`);
+        alert(`Sorry, computer wins.`);
         reset()
     }
     }
@@ -82,6 +91,8 @@ function reset () {
     roundScore.textContent = round;
     cScore.textContent = computerScore;
 }
+
+
 
 btn.forEach((btn) => {
     btn.addEventListener('click', (e) => {
